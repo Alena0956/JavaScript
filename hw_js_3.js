@@ -53,25 +53,28 @@ printSmile('*', 8)
 // Проверки: 'case', 'Case', 'Check-list'
 
 function getWordStructure(word){
-    vowels = 'aeiouAEIOU';
-    consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ';
-    vow_total = 0;
-    con_total = 0;
-    for (let i = 0; i < word.length; i ++){
-        if (vowels.indexOf(word[i]) !== -1) {
-            vow_total += 1;
-        }
+    vowels = 'aeiouAEIOU'.split('');
+    consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'.split('');
+    vowelsCount = 0;
+    consonantsCount = 0;
+    // for (let i = 0; i < word.length; i ++){
+    //     if (vowels.indexOf(word[i]) !== -1) {
+    //         vow_total += 1;
+    //     }
+    // }
+    // for (let i = 0; i < word.length; i ++){
+    //     if (consonants.indexOf(word[i]) !== -1) {
+    //         con_total += 1;
+    //     }
+    // }
+    for (letter of word.toLowerCase()){
+        if (vowels.includes(letter)) vowelsCount ++
+        else if (consonants.includes(letter)) consonantsCount ++
     }
-    for (let i = 0; i < word.length; i ++){
-        if (consonants.indexOf(word[i]) !== -1) {
-            con_total += 1;
-        }
-    }
-    console.log('Слово', word, 'состоит из', vow_total, 'гласных и', con_total, 'согласных букв')   
+    console.log(`Слово ${word} состоит из: ${vowelsCount} гласных и ${consonantsCount} согласных`)       
 }
 
-getWordStructure('case')
-getWordStructure('Case')
+getWordStructure('cAse')
 getWordStructure('Check-list')
 getWordStructure('m')
 
